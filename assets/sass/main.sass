@@ -1,0 +1,1600 @@
+@import base
+
+// -----CONTAINER-----
+.container
+	width: 100%
+	max-width: 1300px
+	padding: 0 15px
+	margin: 0 auto
+
+	+r(1200)
+		max-width: 992px
+
+	+r(992)
+		max-width: 768px
+
+	+r(767)
+		max-width: 576px
+
+	+r(576)
+		max-width: 480px
+
+// -----BUTTON-----
+.btn
+	position: relative
+	display: flex
+	justify-content: center
+	align-items: center
+	height: 45px
+	border-radius: 20px
+	max-width: fit-content
+	border: 1px solid #4682F0
+	background-color: #4682F0
+	padding: 0 15px
+	font-size: 16px
+	color: #fff
+	font-weight: 600
+
+	&:hover
+		border: 1px solid $accent
+		background: $accent
+		color: #fff
+
+	&:active
+		border: 1px solid #fff
+		background: $accent
+		color: #fff
+
+// -----HAMBURGER-----
+.hamburger
+	position: relative
+	display: none
+	padding: 0
+	border: none
+	background-color: transparent
+	transition: all .3s
+	width: 25px
+	height: 18px
+	margin-right: 15px
+	outline: none
+
+	+r(992)
+		display: flex
+		right: 0
+
+	&:hover
+		span
+			background-color: #000000
+
+			&::before,
+			&::after
+				background-color: #000000
+
+	&__item
+		position: absolute
+		right: 0
+		top: 50%
+		// transform: translate(0, -50%)
+		width: 25px
+		height: 2px
+		background-color: #000000
+		border-radius: 4px
+		+transition
+		bottom: 0
+
+		&::before,
+		&::after
+			content: ''
+			display: block
+			position: absolute
+			right: 0
+			background-color: #000000
+			height: 2px
+			+transition
+
+		&::before
+			top: 7px
+			width: 25px
+
+		&::after
+			top: -7px
+			width: 25px
+
+	&--active
+		z-index: 100
+
+		&:hover
+			span
+				background-color: transparent
+
+				&::before,
+				&::after
+					background-color: #000000
+
+		.hamburger__item
+			background-color: transparent
+
+			&::before
+				top: 0
+				width: 25px
+				transform: rotate(45deg)
+
+			&::after
+				top: 0
+				width: 25px
+				transform: rotate(-45deg)
+
+.header
+	margin-bottom: 35px
+
+	&__container
+		+between
+		margin-top: 25px
+
+	&__logo
+		display: block
+		img
+			width: 100%
+			height: auto
+
+	&__list
+		display: flex
+		gap: 50px
+
+		+r(1200)
+			gap: 25px
+
+	&__item
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #1E1E23
+		position: relative
+		cursor: pointer
+		a
+			color: #1E1E23
+		&:hover
+			color: #1b1b55cc
+			font-size: 16px
+			ul
+				left: 0
+				z-index: 10
+				display: flex 
+				flex-direction: column
+
+	&__list--hiden
+		margin: 10px 0
+		padding: 0 15px
+
+	&__dropdown
+		position: absolute
+		background: rgba(255, 254, 254, 1)
+		list-style: none
+		left: -3500%
+		z-index: 10
+		width: contain
+		+r(992)
+			background:	#f6f6f6
+
+	&__nav
+		display: flex
+		gap: 70px
+		align-items: center
+
+		+r(1200)
+			gap: 15px
+
+		+r(992)
+			+transition
+			flex-direction: column
+			position: fixed
+			top: 0
+			right: -150%
+			bottom: 0
+			z-index: 50
+			width: 100vw
+			height: 100%
+			padding: 20px
+			padding-top: 80px
+			background: #F6F6F6
+			box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.1)
+			gap: 20px
+			align-content: center
+			align-items: center
+			justify-content: center
+			&--active
+				right: 0
+
+	&__accordion--content
+		+r(576)
+			+transition
+			overflow: hidden
+			color: #b5acac
+			padding-left: 40px
+			height: 0
+			left: 0
+			display: flex 
+			flex-direction: column
+
+	.accordion
+		margin: 0
+		&__header
+			margin-bottom: 20px
+
+		&__content
+			opacity: 1
+
+
+.banner
+	margin-bottom: 80px
+
+	&__container
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
+		gap: 100px
+		
+
+		+r(1200)
+			gap: 30px
+
+		+r(992)
+			gap: 10px
+
+		+r(767)
+			grid-template-columns: 1fr
+
+	&__content
+		display: flex
+		flex-direction: column
+		margin-top: 20px
+		
+		+r(767)
+			align-items: center
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 15px
+		+r(992)
+			line-height: 50px
+			font-size: 36px
+		+r(767)
+			font-size: 48px
+			line-height: 60px
+			text-align: center
+		+r(576)
+			font-size: 34px
+			line-height: 43px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 140%
+		color: rgba(30, 30, 35, 0.7)
+		margin-bottom: 25px
+		padding-right: 80px
+		+r(1200)
+			padding-right: 20px
+		+r(992)
+			font-size: 14px
+		+r(767)
+			font-size: 15px
+			padding: 0
+			text-align: center
+
+	&__img
+		width: 100%
+		+r(992)
+			width: 100%
+			height: 435px
+			object-fit: cover
+			border-radius: 0 0 100px 0
+		+r(767)
+			width: 0
+			height: 0
+			display: none
+
+	&__item
+		display: flex
+		gap: 25px
+		align-items: center
+		+r(576)
+			flex-direction: column
+
+	&__btn
+		border-radius: 25px 0px 0px 0px
+		border: 1px solid #4682F0
+		width: 181px
+		height: 49px
+		gap: 15px
+		padding: 15px 35px
+
+	&__subtext
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 140%
+		color: rgba(30, 30, 35, 0.7)
+
+.services
+	margin-bottom: 80px
+	&__container
+		display: flex
+		align-items: center
+		justify-content: center
+		gap: 20px
+		+r(1200)
+			flex-direction: column
+
+	&__side
+		background: #4682F0
+		background-size: contain
+		padding: 122px 25px
+		border-radius: 100px 0px 0px 0px
+		+r(1200)
+			width: 100%
+			padding: 65px 0
+			border-radius: 300px 0px 0px 0px
+		+r(576)
+			border-radius: 150px 0px 0px 0px
+			padding: 60px 70px
+		+r(420)
+			padding: 100px 10px
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		text-align: center
+		color: #FFFFFF
+
+	&__content
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
+		gap: 20px
+		+r(1200)
+			gap: 35px
+		+r(576)
+			grid-template-columns: 1fr
+			gap: 25px
+
+	&__item
+		border: 1px solid #E6E6E6
+		padding: 30px 50px 30px 30px
+		&:last-child
+			border-radius: 0px 0px 100px 0px
+			+r(576)
+				border-radius: 0
+
+	&__subtitle
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 900
+		font-size: 28px
+		line-height: 35px
+		color: #000000
+		margin-bottom: 10px
+		+r(576)
+			font-size: 22px
+			line-height: 28px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: rgba(30, 30, 35, 0.5)
+		margin-bottom: 10px
+		+r(576)
+			font-size: 12px
+			line-height: 15px
+
+	&__more
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #4682F0
+		+r(576)
+			font-size: 12px
+			line-height: 15px
+
+.clean
+	margin-bottom: 80px
+
+	&__container
+		display: flex
+		justify-content: space-between
+		+r(992)
+			align-items: center
+		+r(767)
+			justify-content: center
+
+	&__content
+		display: flex
+		flex-direction: column
+		+r(767)
+			align-items: center
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 800
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 10px
+		+r(992)
+			font-size: 34px
+		+r(767)
+			text-align: center
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: rgba(30, 30, 35, 0.7)
+		margin-bottom: 10px
+		width: 440px
+		+r(767)
+			width: 100%
+			text-align: center
+		&--last
+			font-family: 'Sora'
+			font-style: normal
+			font-weight: 400
+			font-size: 15px
+			line-height: 19px
+			color: rgba(30, 30, 35, 0.7)
+			margin-bottom: 20px
+			width: 440px
+			+r(767)
+				width: 100%
+				text-align: center
+
+	&__list
+		list-style-type: square
+		color: rgba(30, 30, 35, 0.7)
+		margin-left: 25px
+		margin-bottom: 10px
+		width: 400px
+		+r(992)
+			list-style-type: none
+			margin-left: 0
+		+r(767)
+			list-style-type: square
+			margin-left: 70px
+		+r(576)
+			margin-left: 0
+			list-style-type: none
+			text-align: center
+			width: 100%
+
+	&__items
+		li
+			padding: 10px
+
+	&__btn
+		width: 150px
+		height: 49px
+		background: #1E1E23
+		border-radius: 25px 0px
+		border: 0
+		padding: 15px 35px
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #FFFFFF
+
+	&__img
+		img
+			width: 100%
+			object-fit: cover
+			+r(767)
+				width: 0
+				display: none
+
+.modal
+	background: #F6F6F6
+
+	&__container
+		display: flex
+		justify-content: center
+		align-items: center
+		gap: 50px
+
+	&__content
+		display: flex
+		flex-direction: column
+		width: 530px
+		+r(767)
+			justify-content: center
+			align-items: center
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 15px
+		+r(767)
+			text-align: center
+			margin-top: 75px
+		+r(576)
+			font-size: 34px
+			font-weight: 800
+
+	&__img
+		margin-top: 10px
+		+r(767)
+			display: none
+
+	&__input
+		background: #FFFFFF
+		border: 1px solid #DCDCDC
+		border-radius: 0px
+		width: 330px
+		height: 49px
+		margin-bottom: 15px
+		+r(767)
+			width: 100%
+		&::placeholder
+			font-family: 'Sora'
+			font-style: normal
+			font-weight: 400
+			font-size: 12px
+			line-height: 15px
+			text-transform: uppercase
+			color: rgba(30, 30, 35, 0.35)
+			+r(767)
+				text-align: center
+
+	&__btn
+		width: 100%
+		height: 49px
+		border: 0
+		background: #1E1E23
+		border-radius: 0px
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #FFFFFF
+		padding: 15px 35px
+		+r(767)
+			margin-bottom: 75px
+
+.benefits
+	background: url("../img/benefits.png")
+	margin-bottom: 80px
+
+	&__container
+		display: flex
+		flex-direction: column
+		align-items: center
+
+	&__head
+		display: flex
+		flex-direction: column
+		align-items: center
+		margin: 80px 0 75px 0
+		width: 666px
+		+r(767)
+			width: 100%
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 15px
+		line-height: 19px
+		text-align: center
+		text-transform: uppercase
+		color: #FFFFFF
+
+	&__subtitle
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		text-align: center
+		color: #FFFFFF
+		margin-bottom: 10px
+		+r(576)
+			font-size: 34px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 140%
+		text-align: center
+		color: rgba(255, 255, 255, 0.7)
+
+	&__content
+		display: grid
+		grid-template-columns: repeat(4, 1fr)
+		column-gap: 50px
+		row-gap: 25px
+		margin-bottom: 70px
+		+r(992)
+			grid-template-columns: repeat(2, 1fr)
+		+r(576)
+			grid-template-columns: 	1fr
+
+	&__item
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		background: #FFFFFF
+		border: 1px solid #D9D9D9
+		border-radius: 3px
+		&:nth-child(2)
+			margin-block-start: -50px
+			margin-bottom: 50px
+			+r(992)
+				margin: 0
+		&:nth-child(3)
+			margin-block-start: -50px
+			margin-bottom: 50px
+			+r(992)
+				margin: 0
+		&:nth-child(6)
+			margin-block-end: -50px
+			margin-top: 50px
+			+r(992)
+				margin: 0
+		&:nth-child(7)
+			margin-block-end: -50px
+			margin-top: 50px
+			+r(992)
+				margin: 0
+
+	&__number
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 700
+		font-size: 64px
+		line-height: 81px
+		text-align: center
+		color: #4682F0
+		margin-bottom: 20px
+		padding-top: 80px
+		&::before
+			content: counter(count) " "
+
+	&__subtext
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 23px
+		text-align: center
+		color: #1E1E23
+		padding: 0 40px 70px 40px
+
+	&__footer
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 140%
+		text-align: center
+		color: rgba(255, 255, 255, 0.7)
+		width: 777px
+		margin-bottom: 80px
+		+r(992)
+			width: 100%
+
+.respons
+
+	.respons-swiper
+		max-width: 100%
+		overflow: hidden
+
+	&__container
+		display: flex
+		flex-direction: column
+		align-items: center
+
+	&__head
+		display: flex
+		flex-direction: column
+		align-items: center
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 15px
+		line-height: 19px
+		text-transform: uppercase
+		color: #4682F0
+		margin-bottom: 10px
+
+	&__subtitle
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		text-align: center
+		color: #1E1E23
+		margin-bottom: 50px
+		+r(576)
+			font-size: 34px
+			text-align: center
+
+	&__wrapper
+		margin-bottom: 80px
+
+	&__slide
+		display: flex
+		flex-direction: column
+		align-items: center
+
+	&__img
+		margin-bottom: 20px
+
+	&__subtext
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		text-align: center
+		color: #1E1E23
+		opacity: 0.75
+		margin-bottom: 10px
+
+	&__name
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 800
+		font-size: 18px
+		line-height: 23px
+		text-align: center
+		color: #1E1E23
+		margin-bottom: 5px
+
+	&__description
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		text-align: center
+		color: #1E1E23
+		opacity: 0.5
+
+.faq
+	background: #F7F7F7
+
+	&__container
+		max-width: 860px
+
+	&__head
+		display: flex
+		flex-direction: column
+		align-items: center
+		margin-top: 50px
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 15px
+		line-height: 19px
+		text-transform: uppercase
+		color: #4682F0
+		margin-bottom: 10px
+
+	&__subtitle
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		text-align: center
+		color: #1E1E23
+		margin-bottom: 25px
+		+r(576)
+			font-size: 34px
+
+	&__accordion
+		cursor: pointer
+		&:last-child
+			margin-bottom: 25px
+
+	&__accordion--header
+		display: flex
+		position: relative
+		align-items: center
+		height: 50px
+		gap: 40px
+		padding: 30px 15px
+		border-top: 1px solid #E7E7E7
+		border-bottom: 1px solid #E7E7E7
+
+	&__img
+		position: absolute
+		right: 20px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		padding-right: 30px
+		line-height: 23px
+		color: #000000
+		+r(576)
+			font-size: 12px
+
+	&__accordion--content
+		+transition
+		overflow: hidden
+		color: #b5acac
+		padding-left: 40px
+		height: 0
+		+r(576)
+			padding-left: 10px
+			width: 100%
+
+	.accordion
+		margin: 0
+		&__header
+			margin-bottom: 20px
+
+		&__content
+			opacity: 1
+
+	&__number
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 23px
+		color: #4682F0
+		+r(576)
+			font-size: 12px
+		&::before
+			content: "0"
+		&::after
+			content: counter(count) " "
+
+	&__subtext
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 12px
+		line-height: 140%
+		color: #555555
+		margin: 10px 0
+		+r(576)
+			font-size: 12px
+
+	&__btn
+		width: 150px
+		height: 49px
+		background: #1E1E23
+		border-radius: 25px 0px
+		border: 0
+		padding: 15px 35px
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #FFFFFF
+		margin: 25px auto 50px auto
+
+.footer
+	background: #193273
+
+	&__container
+		display: flex
+		margin: 50px auto 50px auto
+		gap: 70px
+		+r(1200)
+			flex-direction: column
+			gap: 40px
+
+	&__wrapper
+		display: flex
+		gap: 40px
+		+r(1200)
+			justify-content: space-between
+		+r(576)
+			flex-direction: column
+			align-items: flex-start
+
+	&__logo
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+
+	&__img
+		+r(576)
+			margin-bottom: 10px
+
+	&__timetable
+		display: flex
+		flex-direction: column
+		gap: 10px
+
+	&__time
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 12px
+		line-height: 15px
+		color: rgba(255, 255, 255, 0.5)
+
+	&__adress
+		justify-content: space-between
+		display: flex
+		flex-direction: column
+
+	&__contacts
+		display: flex
+		flex-direction: column
+		gap: 15px
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 23px
+		color: #FFFFFF
+		+r(992)
+		margin-bottom: 10px
+
+	&__tel
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 12px
+		line-height: 15px
+		text-decoration-line: underline
+		color: #FFFFFF
+		&:hover
+			color: #FFFFFF
+
+	&__list
+		display: flex
+		gap: 25px
+		margin-bottom: 65px
+		+r(1200)
+			justify-content: space-between
+			gap: 45px
+		+r(992)
+			gap: 10px
+		+r(767)
+			flex-wrap: wrap
+			justify-content: center
+		+r(576)
+			flex-wrap: nowrap
+			flex-direction: column
+			gap: 25px
+			margin-bottom: 25px
+
+	&__item
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #FFFFFF
+
+	&__subitem
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 12px
+		line-height: 15px
+		color: rgba(255, 255, 255, 0.75)
+		width: 160px
+
+	&__horisontal
+		display: flex
+		flex-direction: column
+		gap: 10px
+
+	&__rigths
+		display: flex
+		align-items: flex-end
+		justify-content: space-between
+		+r(992)
+			align-items: center
+		+r(576)
+			flex-direction: column-reverse
+			align-items: flex-start
+
+	&__sublist
+		display: flex
+		gap: 25px
+		&:last-child
+			margin-bottom: 25px
+		+r(576)
+			flex-direction: column
+			gap: 15px
+
+	&__navigation
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 12px
+		line-height: 15px
+		color: rgba(255, 255, 255, 0.75)
+
+// manufac
+.manufac--baner
+	margin: 80px 0
+
+	&__wrapper
+		display: flex
+		gap: 50px
+		+r(1200)
+			gap: 25px
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 31px
+		+r(992)
+			text-align: center
+		+r(576)
+			font-size: 34px
+			margin-bottom: 15px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 22px
+		line-height: 28px
+		color: rgba(30, 30, 35, 0.7)
+		margin-bottom: 10px
+		width: 645px
+		+r(1200)
+			font-size: 15px
+			width: 100%
+		+r(992)
+			text-align: center
+			font-size: 16px
+		+r(576)
+			font-size: 14px	
+
+	&__img
+		img
+			object-fit: cover
+		+r(992)
+			display: none
+
+	&__btn
+		background: #4682F0
+		border-radius: 35px 0px
+		padding: 15px 30px
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 23px
+		color: #FFFFFF
+		margin-top: 30px
+		+r(992)
+			margin: 20px auto
+
+.choose
+	margin-bottom: 80px
+
+	&__container
+		display: flex
+		gap: 50px
+		+r(992)
+			flex-direction: column
+			gap: 25px
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 15px
+		+r(992)
+			text-align: center
+		+r(576)
+			font-size: 34px
+			line-height: 43px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 22px
+		line-height: 28px
+		color: rgba(30, 30, 35, 0.7)
+		+r(992)
+			text-align: center
+		+r(767)
+			font-size: 18px
+		+r(576)
+			font-size: 14px
+		&--warehouse
+			font-family: 'Sora'
+			font-style: normal
+			font-weight: 400
+			font-size: 18px
+			line-height: 28px
+			color: rgba(30, 30, 35, 0.7)
+			margin-bottom: 10px
+			+r(992)
+				text-align: center
+			+r(767)
+				font-size: 18px
+			+r(576)
+				font-size: 14px
+
+	&__content
+		display: flex
+		flex-direction: column
+		justify-content: center
+
+	&__img
+		img
+			+r(992)
+				border-radius: 25px
+				width: 100%
+				object-fit: cover
+
+.industrial
+	background: url("../img/benefits.png")
+
+	&__container
+		display: flex
+		flex-direction: column
+		align-items: center
+
+	&__head
+		display: flex
+		flex-direction: column
+		align-items: center
+		margin: 80px 0 75px 0
+		width: 666px
+		+r(767)
+			width: 100%
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 15px
+		line-height: 19px
+		text-align: center
+		text-transform: uppercase
+		color: #FFFFFF
+
+	&__subtitle
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		text-align: center
+		color: #FFFFFF
+		margin-bottom: 10px
+		+r(576)
+			font-size: 34px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 140%
+		text-align: center
+		color: rgba(255, 255, 255, 0.7)
+
+	&__content
+		display: grid
+		grid-template-columns: repeat(3, 1fr)
+		column-gap: 50px
+		row-gap: 45px
+		margin-bottom: 70px
+		+r(992)
+			grid-template-columns: repeat(2, 1fr)
+		+r(576)
+			grid-template-columns: 	1fr
+
+	&__item
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		background: #FFFFFF
+		border: 1px solid #D9D9D9
+		border-radius: 3px
+		height: 400px
+		&:nth-child(2)
+			margin-block-start: -50px
+			margin-bottom: 50px
+			+r(992)
+				margin: 0
+		&:nth-child(5)
+			margin-block-end: -50px
+			margin-top: 50px
+			+r(992)
+				margin: 0
+
+	&__number
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 700
+		font-size: 64px
+		line-height: 81px
+		text-align: center
+		color: #4682F0
+		margin-bottom: 20px
+		padding-top: 80px
+		&::before
+			content: counter(count) " "
+
+	&__subtext
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 23px
+		text-align: center
+		color: #1E1E23
+		padding: 0 40px 70px 40px
+
+	&__footer
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 140%
+		text-align: center
+		color: rgba(255, 255, 255, 0.7)
+		width: 777px
+		margin: 50px 0 80px 0
+		+r(992)
+			width: 100%
+
+//Warehouse Cleaning Services
+.warehouse--baner
+	margin: 80px 0
+
+	&__wrapper
+		display: flex
+		gap: 50px
+		+r(1200)
+			gap: 25px
+
+	&__content
+		display: flex
+		flex-direction: column
+		justify-content: center
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 31px
+		+r(992)
+			text-align: center
+		+r(576)
+			font-size: 34px
+			margin-bottom: 15px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 22px
+		line-height: 28px
+		color: rgba(30, 30, 35, 0.7)
+		margin-bottom: 10px
+		width: 645px
+		+r(1200)
+			font-size: 15px
+			width: 100%
+		+r(992)
+			text-align: center
+			font-size: 16px
+		+r(576)
+			font-size: 14px	
+
+	&__img
+		img
+			object-fit: cover
+		+r(992)
+			display: none
+
+	&__btn
+		background: #4682F0
+		border-radius: 35px 0px
+		padding: 15px 30px
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 23px
+		color: #FFFFFF
+		margin-top: 30px
+		+r(992)
+			margin: 20px auto
+
+//Meat Processing Cleaning
+.general--cleaning
+	margin-bottom: 80px
+
+	&__container
+		display: flex
+		gap: 100px
+		align-items: center
+		+r(1200)
+			gap: 30px
+		+r(992)
+			flex-direction: column
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 10px
+		+r(1200)
+			font-size: 34px
+			line-height: 43px
+		+r(992)
+			font-size: 48px
+			line-height: 60px
+			text-align: center
+		+r(576)
+			font-size: 34px
+			line-height: 43px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: rgba(30, 30, 35, 0.7)
+		margin-bottom: 10px
+		+r(1200)
+			font-size: 14px
+		+r(992)
+			text-align: center
+
+	&__btn
+		width: 150px
+		height: 49px
+		background: #1E1E23
+		border-radius: 25px 0px
+		border: 0
+		padding: 15px 35px
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #FFFFFF
+		margin: 20px 0 0 0
+
+	&__content
+		margin-top: 10px
+		+r(992)
+			display: flex
+			flex-direction: column
+			align-items: center
+
+	&__img
+		img
+		+r(992)
+			display: none
+
+//Commercial Sanitation Cleaning Services
+.offers
+	margin-bottom: 80px
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 28px
+		color: rgba(30, 30, 35, 0.7)
+		margin-bottom: 10px
+
+	&__text
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 18px
+		line-height: 28px
+		color: rgba(30, 30, 35, 0.7)
+
+	&__list
+		list-style-type: square
+		margin-left: 40px
+
+//contacts
+.contacts
+	margin-bottom: 80px
+
+	&__container
+		display: flex
+		justify-content: space-between
+		+r(992)
+			flex-direction: column
+
+	&__title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 48px
+		line-height: 60px
+		color: #1E1E23
+		margin-bottom: 15px
+
+	&__subtitle
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 22px
+		line-height: 28px
+		color: #1E1E23
+		margin-bottom: 15px
+	
+	&__wrapper
+		display: flex
+		justify-content: space-between
+		margin-bottom: 25px
+		+r(1200)
+			justify-content: flex-start
+			gap: 100px
+		+r(576)
+			gap: 20px
+
+	&__form-group
+		display: flex
+		flex-direction: column
+
+	&__placeholder
+		width: 309px
+		height: 49px
+		border: 1px solid rgba(30, 30, 35, 0.2)
+		border-radius: 15px 0px
+		display: flex
+		gap: 40px
+		padding: 20px 15px
+		&::placeholder
+			font-family: 'Sora'
+			font-style: normal
+			font-weight: 400
+			font-size: 15px
+			line-height: 19px
+			color: rgba(30, 30, 35, 0.2)
+			padding: 0 0 0 15px
+			position: absolute
+			top: 15px
+		+r(1200)
+			width: 100%
+
+	#message
+		width: 648px
+		height: 149.27px
+		left: 0px
+		top: 128.73px
+		border: 1px solid rgba(30, 30, 35, 0.2)
+		border-radius: 15px 0px
+		margin-bottom: 25px
+		padding: 15px 15px
+		+r(1200)
+			width: 100%
+
+	&__name
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 15px
+		line-height: 19px
+		color: #1E1E23
+
+	&__star
+		color: #4682F0
+
+	&__btn
+		width: 126px
+		height: 49px
+		background: #1E1E23
+		border-radius: 25px 0px
+		border: 0
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: #FFFFFF
+		padding: 15px 35px
+
+	&__vl
+		border: 1px solid rgba(30, 30, 35, 0.1)
+		height: 395px
+		margin-top: 60px
+		+r(992)
+			display: none
+
+	&__items
+		display: flex
+		flex-direction: column
+		gap: 50px
+		justify-content: center
+
+	&__slash
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 400
+		font-size: 15px
+		line-height: 19px
+		color: rgba(30, 30, 35, 0.2)
+
+	&__contact--group-title
+		font-family: 'Sora'
+		font-style: normal
+		font-weight: 600
+		font-size: 22px
+		line-height: 28px
+		color: #1E1E23
+		margin-bottom: 15px
+
+	#contacts__form
+		+r(992)
+			margin-bottom: 50px 
+
+.map
+	margin-bottom: 80px
+
+	&__location
+		height: 600px
+		+r(576)
+			height: 400px
